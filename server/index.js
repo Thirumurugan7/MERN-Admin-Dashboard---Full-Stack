@@ -28,3 +28,21 @@ app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("management", managementRoutes);
 app.use("/sales", salesRoutes);
+
+// Setting up Mongoose
+
+const PORT = process.env.PORT || 9000;
+
+mongoose
+  .connect(process.env.MONGODB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server connected to ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.log(`Due to ${error} connection not successfull!`);
+  });
