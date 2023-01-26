@@ -18,3 +18,10 @@ app.use(morgan("common")); //for api calls from different server
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+
+// Routes
+
+app.use("/client", clientRoutes);
+app.use("/general", generalRoutes);
+app.use("management", managementRoutes);
+app.use("/sales", salesRoutes);
